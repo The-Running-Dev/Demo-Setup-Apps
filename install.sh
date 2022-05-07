@@ -4,12 +4,16 @@
 dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 # Create a log file
-today="$(date "+%Y.%m.%d.%mm.%s")"
-log=$dir/install.$today.log
+today="$(date "+%Y.%m.%d.%M.%S")"
+installLog=$dir/install.$today.log
+errorLog=$dir/error.$today.log
 
 # Redirect all output to the log file
-exec > >(tee -a ${log} )
-exec 2> >(tee -a ${log} >&2)
+exec > >(tee -a ${installLog} )
+exec 2> >(tee -a ${errorLog} >&2)
+
+echo "Updating Repositores..."
+sudo apt-get update -y > /dev/null
 
 appScripts=("$dir"/apps/*.sh)
 
