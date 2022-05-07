@@ -2,7 +2,7 @@
 
 downloadUrl='https://www.xmind.net/xmind/downloads/xmind-8-update9-linux.zip'
 repositoryUrl='https://github.com/mriza/XMind-Linux-Installer.git'
-cloneDir='/tmp/XMind-Linux-Installer/'
+cloneDir='/tmp/XMind-Linux-Installer'
 
 echo "Installing Dependencies..."
 sudo apt-get install -y \
@@ -17,10 +17,11 @@ git clone $repositoryUrl $cloneDir
 
 if [ -d $cloneDir ]; then
     sudo chmod +x $cloneDir/*.sh
-    chmod +x xmind-installer.sh;
 
     wget -O $cloneDir/xmind-8-update9-linux.zip $downloadUrl
 
     echo "Installing Xmind..."
+    pushd $cloneDir
     sudo $cloneDir/xmind-installer.sh $(whoami)
+    popd
 fi
