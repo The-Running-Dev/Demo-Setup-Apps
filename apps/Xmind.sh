@@ -1,4 +1,4 @@
 #!/bin/bash -e
 
-echo "Installing XMind..."
+echo "Installing Xmind..."
 sudo apt-get install -y xmind
