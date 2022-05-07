@@ -22,6 +22,6 @@ if [ -d $cloneDir ]; then
 
     echo "Installing Xmind..."
     pushd $cloneDir
-    sudo $cloneDir/xmind-installer.sh $(whoami)
+    sudo bash $cloneDir/xmind-installer.sh $(whoami)
     popd
 fi
