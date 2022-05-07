@@ -12,9 +12,6 @@ errorLog=$dir/error.$today.log
 exec > >(tee -a ${installLog} )
 exec 2> >(tee -a ${errorLog} >&2)
 
-echo "Updating Repositores..."
-sudo apt-get update -y > /dev/null
-
 appScripts=("$dir"/apps/*.sh)
 
 # Ask for the user password & cache it

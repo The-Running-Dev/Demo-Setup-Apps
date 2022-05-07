@@ -1,7 +1,5 @@
 #!/bin/bash -e
 
-echo "Installing Visual Code..."
-
 # install dependencies
 wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > packages.microsoft.gpg
 
@@ -14,5 +12,12 @@ sudo sh -c 'echo "deb [arch=amd64 signed-by=/etc/apt/trusted.gpg.d/packages.micr
 
 # install updates again and install VS Code
 sudo apt-get install -y apt-transport-https
-sudo apt-get update -y
+
+echo "Updating Repositores..."
+sudo apt-get update -y > /dev/null
+
+echo "Installing Visual Studio Code..."
 sudo apt-get install -y code
+
+# Cleanup
+rm ./packages.microsoft.gpg
